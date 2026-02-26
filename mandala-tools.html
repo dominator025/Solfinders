@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Mandalas - Digital Medicine</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        .mandala-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .mandala-circle {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .mandala-layer {
+            position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid;
+        }
+
+        .mandala-layer:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            border-color: #C41E3A;
+        }
+
+        .mandala-layer:nth-child(2) {
+            width: 85%;
+            height: 85%;
+            border-color: #D4A574;
+        }
+
+        .mandala-layer:nth-child(3) {
+            width: 70%;
+            height: 70%;
+            border-color: #8B4513;
+        }
+
+        .mandala-layer:nth-child(4) {
+            width: 55%;
+            height: 55%;
+            border-color: #6B8E5A;
+        }
+
+        .mandala-layer:nth-child(5) {
+            width: 40%;
+            height: 40%;
+            border-color: #D4A574;
+        }
+
+        .center-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #C41E3A, #D4A574);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+        }
+
+        .breathing-mandala-animated {
+            animation: breatheSync 6s infinite;
+        }
+
+        .rangoli-canvas {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 5px;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+        }
+
+        .rangoli-tile {
+            aspect-ratio: 1;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #D4A574, #C41E3A);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .rangoli-tile:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .breathing-guide {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(107, 142, 90, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .breath-phase {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 1rem 0;
+            min-height: 30px;
+        }
+
+        .breath-counter {
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🕉️</span>
+                <span class="logo-text">Digital Medicine</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#features" class="nav-link">Features</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Breathing Mandalas</h1>
+            <p class="hero-subtitle">Sacred Geometry Synchronized with Your Breath</p>
+            <p class="hero-description">Mandalas are ancient tools for meditation and healing. Our digital Mandalas and Rangoli patterns respond to your breathing, creating a living meditation that synchronizes your mind, body, and spirit.</p>
+        </div>
+    </section>
+
+    <!-- Understanding Mandalas -->
+    <section class="features">
+        <div class="container">
+            <h2>The Sacred Geometry of Healing</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; color: var(--text-light);">
+                Mandalas represent cosmic wholeness and serve as portals to deeper states of consciousness. Combined with breathwork, they become powerful tools for nervous system regulation.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔵</div>
+                    <h3>Sacred Circle Mandala</h3>
+                    <p>The most fundamental mandala form. Circles represent unity, eternity, and the self. Gazing at this mandala centers the mind and brings stable awareness.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Lotus Mandala</h3>
+                    <p>The lotus symbolizes spiritual growth and purity. This mandala opens the heart center and facilitates emotional transformation and awakening.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Mandala Drawing (Interactive)</h3>
+                    <p>Create your own healing mandala through a guided interactive tool. The act of creation becomes meditation, releasing creativity and stress simultaneously.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌈</div>
+                    <h3>Colorful Rangoli</h3>
+                    <p>Traditional rangoli patterns adapt to your breathing rhythm. Each breath creates a new pattern, making every meditation unique and personal.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌟</div>
+                    <h3>Star of David Mandala</h3>
+                    <p>A universal symbol of balance. This mandala harmonizes opposing energies within you—masculine and feminine, active and receptive.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">☯️</div>
+                    <h3>Yin-Yang Mandala</h3>
+                    <p>Represents the balance of all opposing forces. Perfect for those seeking equilibrium during times of stress or transition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Mandala Demo -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>Experience a Breathing Mandala</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">Follow the mandala's expansion and contraction with your breath. Let your awareness rest on the center point.</p>
+            
+            <div class="mandala-container">
+                <div class="mandala-circle breathing-mandala-animated">
+                    <div class="mandala-layer"></div>
+                    <div class="mandala-layer"></div>
+                    <div class="mandala-layer"></div>
+                    <div class="mandala-layer"></div>
+                    <div class="mandala-layer"></div>
+                    <div class="center-dot"></div>
+                </div>
+            </div>
+
+            <div class="breathing-guide">
+                <p class="breath-phase" id="breathPhase">Take a deep breath in...</p>
+                <p class="breath-counter" id="breathCounter">4</p>
+                <button class="cta-button" onclick="startBreathingGuidance()">Start Guided Breathing</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rangoli Creation Tool -->
+    <section class="tools-section">
+        <div class="container">
+            <h2>Create Your Rangoli</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--text-light);">
+                Rangoli is a traditional art form that brings auspiciousness to spaces. Click on the tiles to create a beautiful pattern inspired by ancient designs.
+            </p>
+            
+            <div class="rangoli-canvas" id="rangoli">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="cta-button" onclick="generateRangoli()">Generate Random Design</button>
+                <button class="cta-button" style="margin-left: 1rem;" onclick="clearRangoli()">Clear</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breathing Techniques -->
+    <section class="problem-section">
+        <div class="container">
+            <h2>Breathing Techniques for Healing</h2>
+            <div class="problem-content">
+                <div class="problem-card">
+                    <h3>🌬️ Box Breathing (4-4-4-4)</h3>
+                    <p>Inhale for 4 counts, hold for 4, exhale for 4, hold for 4. This technique instantly calms the nervous system and is used by athletes and military personnel for stress management.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>🌬️ Extended Exhale (4-8)</h3>
+                    <p>Inhale for 4 counts, exhale for 8. This activates the parasympathetic nervous system, promoting deep relaxation and emotional release.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>🌬️ Alternate Nostril Breathing</h3>
+                    <p>Balance left and right brain by alternately breathing through each nostril. This ancient Pranayama technique brings mental clarity and emotional equilibrium.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Meditations -->
+    <section class="features">
+        <div class="container">
+            <h2>Interactive Mandala Sessions</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Morning Clarity Mandala</h3>
+                    <p>10-minute session | Golden mandala synchronized with energizing breath work to start your day with purpose and clarity.</p>
+                    <button class="feature-link" style="background: none; border: none; font-size: 1rem; padding: 0; cursor: pointer;" onclick="startMandalaSession('Morning Clarity')">Launch Session →</button>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Heart Opening Flow</h3>
+                    <p>15-minute session | Rose mandala with heart-centered breathing to open blocks and cultivate compassion.</p>
+                    <button class="feature-link" style="background: none; border: none; font-size: 1rem; padding: 0; cursor: pointer;" onclick="startMandalaSession('Heart Opening')">Launch Session →</button>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Deep Sleep Mandala</h3>
+                    <p>20-minute session | Gentle mandala with slow, deep breathing to prepare for restorative sleep.</p>
+                    <button class="feature-link" style="background: none; border: none; font-size: 1rem; padding: 0; cursor: pointer;" onclick="startMandalaSession('Deep Sleep')">Launch Session →</button>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Stress Release Mandala</h3>
+                    <p>12-minute session | Dynamic mandala with powerful breathing to release accumulated stress and tension.</p>
+                    <button class="feature-link" style="background: none; border: none; font-size: 1rem; padding: 0; cursor: pointer;" onclick="startMandalaSession('Stress Release')">Launch Session →</button>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Chakra Alignment Mandala</h3>
+                    <p>25-minute session | Multicolored mandala that guides healing through all seven chakras with synchronized breathing.</p>
+                    <button class="feature-link" style="background: none; border: none; font-size: 1rem; padding: 0; cursor: pointer;" onclick="startMandalaSession('Chakra Alignment')">Launch Session →</button>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Creative Flow Mandala</h3>
+                    <p>18-minute session | Colorful mandala that activates your creative center while keeping you grounded and focused.</p>
+                    <button class="feature-link" style="background: none; border: none; font-size: 1rem; padding: 0; cursor: pointer;" onclick="startMandalaSession('Creative Flow')">Launch Session →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>The Science of Sacred Geometry</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p style="margin-bottom: 1rem;"><strong>🧠 Enhanced Focus</strong></p>
+                    <p class="testimonial-text">Mandala gazing activates sustained attention networks in the brain, improving concentration for hours afterward.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p style="margin-bottom: 1rem;"><strong>❤️ Emotional Balance</strong></p>
+                    <p class="testimonial-text">The symmetry and pattern of mandalas calm the amygdala (fear center) and activate the prefrontal cortex (reasoning center).</p>
+                </div>
+                <div class="testimonial-card">
+                    <p style="margin-bottom: 1rem;"><strong>🕉️ Spiritual Connection</strong></p>
+                    <p class="testimonial-text">Beyond science, mandalas connect us to millennia of spiritual practice, awakening our innate capacity for wholeness and transcendence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Discover Your Healing Mandala</h2>
+            <p>Start with just one 10-minute session. Most users report immediate stress relief and mental clarity.</p>
+            <button class="cta-button-large" onclick="startMandalaSession('Quick Session')">Begin Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Digital Medicine. Transforming Ancient Wisdom into Modern Healing.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="sessionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize Rangoli
+        function initRangoli() {
+            const canvas = document.getElementById('rangoli');
+            canvas.innerHTML = '';
+            for (let i = 0; i < 81; i++) {
+                const tile = document.createElement('div');
+                tile.className = 'rangoli-tile';
+                tile.style.background = getRandomColor();
+                tile.onclick = function() {
+                    this.style.background = getRandomColor();
+                };
+                canvas.appendChild(tile);
+            }
+        }
+
+        function getRandomColor() {
+            const colors = ['#C41E3A', '#D4A574', '#8B4513', '#6B8E5A', '#D4AF37', 'rgba(212, 175, 55, 0.3)'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function generateRangoli() {
+            const canvas = document.getElementById('rangoli');
+            const tiles = canvas.querySelectorAll('.rangoli-tile');
+            tiles.forEach(tile => {
+                tile.style.background = getRandomColor();
+            });
+        }
+
+        function clearRangoli() {
+            const canvas = document.getElementById('rangoli');
+            const tiles = canvas.querySelectorAll('.rangoli-tile');
+            tiles.forEach(tile => {
+                tile.style.background = 'rgba(212, 175, 55, 0.3)';
+            });
+        }
+
+        function startBreathingGuidance() {
+            const modal = document.getElementById('sessionModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            const content = `
+                <h2>Guided Breathing Session</h2>
+                <div id="breathingMandala" style="width: 250px; height: 250px; margin: 20px auto; border-radius: 50%; background: conic-gradient(from 0deg, #C41E3A, #D4A574, #8B4513, #6B8E5A, #D4A574, #C41E3A); box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); animation: breatheSync 6s infinite;"></div>
+                <p id="breathingInstruction" style="text-align: center; font-size: 1.2rem; color: var(--primary-color); font-weight: 600; margin: 20px 0;">Take a deep breath in...</p>
+                <button onclick="closeModal()" class="tool-button" style="width: 100%;">Finish Session</button>
+            `;
+            
+            modalBody.innerHTML = content;
+            modal.style.display = 'block';
+            
+            let phase = 0;
+            const phases = ['Inhale for 4 counts...', 'Hold for 4 counts...', 'Exhale for 4 counts...', 'Hold for 4 counts...'];
+            
+            const interval = setInterval(() => {
+                const instruction = document.getElementById('breathingInstruction');
+                if (instruction && modal.style.display !== 'none') {
+                    instruction.textContent = phases[phase];
+                    phase = (phase + 1) % phases.length;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 4000);
+        }
+
+        function startMandalaSession(sessionName) {
+            const modal = document.getElementById('sessionModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            const content = `
+                <h2>${sessionName} Mandala Session</h2>
+                <div style="width: 280px; height: 280px; margin: 20px auto; border-radius: 50%; background: conic-gradient(from 0deg, #C41E3A, #D4A574, #8B4513, #6B8E5A, #D4A574, #C41E3A); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); animation: breatheSync 6s infinite;"></div>
+                <p style="text-align: center; color: var(--text-light); margin: 20px 0; font-size: 1.1rem;">Gaze at the mandala's center. Let your breath flow naturally...</p>
+                <button onclick="closeModal()" class="tool-button" style="width: 100%;">Exit Session</button>
+            `;
+            
+            modalBody.innerHTML = content;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('sessionModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('sessionModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Initialize rangoli on page load
+        document.addEventListener('DOMContentLoaded', initRangoli);
+    </script>
+</body>
+</html>

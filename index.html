@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Medicine - Ancient Wisdom, Modern Healing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🕉️</span>
+                <span class="logo-text">Digital Medicine</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#tools" class="nav-link">Tools</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Digital Medicine</h1>
+            <p class="hero-subtitle">Converting 5,000 Years of Aesthetic Heritage into Modern Healing</p>
+            <p class="hero-description">Ancient wisdom meets cutting-edge technology. Experience sound therapy, meditative art, and transcendent storytelling grounded in Indian traditions.</p>
+            <button class="cta-button" onclick="document.querySelector('#features').scrollIntoView({behavior: 'smooth'})">Explore Our Tools</button>
+        </div>
+        <div class="hero-visual">
+            <div class="mandala-preview"></div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section id="about" class="problem-section">
+        <div class="container">
+            <h2>The Problem We Solve</h2>
+            <div class="problem-content">
+                <div class="problem-card">
+                    <h3>Modern Stress Needs Soulful Solutions</h3>
+                    <p>In our hyperconnected world, traditional stress management tools fall short. We need interventions that touch the soul—interventions rooted in millennia of human wisdom.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>The Disconnect</h3>
+                    <p>Digital wellness tools are often impersonal and data-driven. Yet the most profound healing comes from practices that engage emotion, spirituality, and cultural resonance.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Our Solution</h3>
+                    <p>Integrate time-tested Indian healing practices—Raagas, Mandalas, and Sacred Tales—into accessible digital experiences that transform stress into serenity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Our Digital Healing Tools</h2>
+            <div class="features-grid">
+                <!-- Feature 1: Sound Therapy -->
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Raaga Sound Therapy</h3>
+                    <p>Experience the healing power of Indian classical music. Our curated collection of Raagas and Vedic chants are scientifically proven to reduce stress and elevate consciousness.</p>
+                    <a href="raaga-therapy.html" class="feature-link">Explore →</a>
+                </div>
+
+                <!-- Feature 2: Digital Mandalas -->
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Breathing Mandalas</h3>
+                    <p>Interactive Mandalas and Rangoli patterns that synchronize with your breathing. Watch sacred geometry dance with each breath for meditative harmony.</p>
+                    <a href="mandala-tools.html" class="feature-link">Explore →</a>
+                </div>
+
+                <!-- Feature 3: AI Storytelling -->
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Sacred Storytelling</h3>
+                    <p>AI-powered narratives based on Panchatantra and Jataka Tales. These ancient stories guide emotional regulation and inner wisdom through personalized storytelling.</p>
+                    <a href="storytelling.html" class="feature-link">Explore →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How Digital Medicine Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Path</h3>
+                    <p>Select from sound therapy, meditative art, or storytelling based on your current emotional state.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Engage Mindfully</h3>
+                    <p>Immerse yourself in our interactive tools designed to calm the nervous system.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Track Your Healing</h3>
+                    <p>Monitor your stress levels and emotional progress through our built-in wellness tracker.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Build Your Practice</h3>
+                    <p>Create personalized healing routines that fit seamlessly into your daily life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <h2>Interactive Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Quick Sound Session</h3>
+                    <p>5-minute Raaga meditation</p>
+                    <button class="tool-button" onclick="playQuickSession()">Start Now</button>
+                </div>
+                <div class="tool-card">
+                    <h3>Breathing Guide</h3>
+                    <p>Synchronized mandala breathing exercise</p>
+                    <button class="tool-button" onclick="startBreathingExercise()">Begin</button>
+                </div>
+                <div class="tool-card">
+                    <h3>Daily Story</h3>
+                    <p>Personalized wisdom tale for today</p>
+                    <button class="tool-button" onclick="getRandomStory()">Read Story</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Voices of Transformation</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Digital Medicine brought me back to my roots while embracing modern life. The Raagas are pure medicine for my soul."</p>
+                    <p class="testimonial-author">— Priya, Mumbai</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The breathing Mandalas helped me manage my anxiety in ways traditional therapy couldn't. It's like meditation finally makes sense."</p>
+                    <p class="testimonial-author">— Aditya, Bangalore</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The Panchatantra stories are profound. Each one feels personally relevant to my current life challenges."</p>
+                    <p class="testimonial-author">— Anjali, Delhi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Begin Your Healing Journey</h2>
+            <p>Join thousands transforming stress into serenity through the wisdom of ancient India.</p>
+            <button class="cta-button-large" onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})">Get Started Free</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Connect With Us</h2>
+            <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Digital Medicine. Transforming Ancient Wisdom into Modern Healing.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Quick Sessions -->
+    <div id="sessionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
